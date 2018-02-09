@@ -1,0 +1,13 @@
+<form novalidate (ngSubmit)="onSubmit(userForm)" [formGroup]="userForm" class="mb-4">
+  <div class="form-group">
+    <label for="username">User Name</label>
+    <input type="text" formControlName="username" class="form-control" id="username">
+    <div class="text-danger" *ngIf="userForm.get('username').hasError('required') && userForm.get('username').touched">
+      Name is required
+    </div>
+    <div class="text-danger" *ngIf="userForm.get('username').hasError('minlength') && userForm.get('username').touched">
+      Minimum of 2 characters
+    </div>
+  </div>
+  <button type="submit" [disabled]="userForm.invalid" class="btn btn-primary">Add New User</button>
+</form>
